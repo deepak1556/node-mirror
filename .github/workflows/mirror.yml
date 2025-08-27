@@ -49,6 +49,9 @@ jobs:
               hash=$(echo $line | cut -d ' ' -f 1)
               file=$(echo $line | cut -d ' ' -f 2)
 
+              echo "Downloading $file"
+              echo "Hash: $hash"
+
               if [[ $file == */* ]]; then
                 continue
               fi
