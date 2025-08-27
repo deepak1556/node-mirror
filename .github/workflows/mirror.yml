@@ -23,7 +23,7 @@ jobs:
           const fs = require('fs');
           const builds = JSON.parse(fs.readFileSync('index.json', 'utf8'));
           const versions = builds.map(build => build.version)
-            .filter(version => parseInt(/^v(\d+)\./.exec(version)[1]) >= 18);
+            .filter(version => parseInt(/^v(\d+)\./.exec(version)[1]) >= 20);
           console.log(versions.join('\n'));
           EOF
           )
