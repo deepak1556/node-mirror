@@ -1,10 +1,5 @@
 name: Mirror Node.JS
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *' # every day, midnight
-
 jobs:
   build:
     runs-on: ubuntu-latest
