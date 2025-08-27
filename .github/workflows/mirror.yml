@@ -15,7 +15,7 @@ jobs:
 
           # Download the trusted keyring from nodejs/release-keys
           # https://github.com/nodejs/node#verifying-binaries
-          curl -fsLo "nodejs-keyring.kbx" "https://github.com/nodejs/release-keys/raw/HEAD/gpg/pubring.kbx"
+          curl -fsLo "/tmp/nodejs-keyring.kbx" "https://github.com/nodejs/release-keys/raw/HEAD/gpg/pubring.kbx"
 
           curl --no-progress-meter -O https://nodejs.org/dist/index.json
 
@@ -39,7 +39,7 @@ jobs:
 
             curl --no-progress-meter -O https://nodejs.org/dist/$version/SHASUMS256.txt.asc
 
-            if ! gpgv --keyring="nodejs-keyring.kbx" --output SHASUMS256.txt < SHASUMS256.txt.asc; then
+            if ! gpgv --keyring="/tmp/nodejs-keyring.kbx" --output SHASUMS256.txt < SHASUMS256.txt.asc; then
               echo "Skipping $version since signature verification failed"
               continue
             fi
